@@ -6,22 +6,19 @@
  * @flow strict-local
  */
 
-import type { Node } from 'react';
+import type { ReactNode } from 'react';
 import React from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet, useColorScheme,
-  View
+  StyleSheet, useColorScheme
 } from 'react-native';
 import {
-  Colors, Header
+  Colors
 } from 'react-native/Libraries/NewAppScreen';
+import RootNavigation from './src/navigation/rootNavigation';
 
 
 
-const App: () => Node = () => {
+const App: () => ReactNode = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -29,21 +26,12 @@ const App: () => Node = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <RootNavigation/>
   );
 };
+
+
+
 
 const styles = StyleSheet.create({
   sectionContainer: {
